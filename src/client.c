@@ -81,9 +81,9 @@ int main(int argc , char *argv[])
     struct sockaddr_in server;          // Server information for connecting
     char message[DEFAULT_BUFLEN];       // Message buffer used for sending to the server
 
-	char *ip;                           // Allow setting arbitrary IP address. If the user doesn't provide any address, localhost is used as a fallback
-	if(argc == 2) ip = argv[1];
-	else ip = "127.0.0.1";
+    char *ip;                           // Allow setting arbitrary IP address. If the user doesn't provide any address, localhost is used as a fallback
+    if(argc == 2) ip = argv[1];
+    else ip = "127.0.0.1";
     int shouldClose = 0;
 
     int maxTimeout = 0;                 // Used to manage timeouts in the client to prevent waiting indefinitely while attempting to establish a conversation
@@ -100,8 +100,8 @@ int main(int argc , char *argv[])
             "Disconnect - Disconnects currently opened conversation\n\t"
             "Data [message] - Send message to user in current conversation\n>");
 
-	while(!shouldClose)                                                // Main event loop where the server and client exchange messages
-	{
+    while(!shouldClose)                                                // Main event loop where the server and client exchange messages
+    {
         clientCommands cmd;
         if(clientState != LOGGING_OUT && clientState != CONNECTING)
             ReadLine(message);
@@ -169,7 +169,7 @@ int main(int argc , char *argv[])
                 }
                 break;
             case CONNECTING:
-				nanosleep(&timeout, NULL);
+                nanosleep(&timeout, NULL);
                 if(clientState == CONNECTING)                // Check if the client is still in the CONNECTING state after sleep
                 {
                     printf(".");                             // Indicator that tells the user the conversation is in the process of being established
@@ -200,9 +200,9 @@ int main(int argc , char *argv[])
             default:
                 break;
         }
-		memset(message, 0, DEFAULT_BUFLEN);
-		memset(receivedMessage, 0, DEFAULT_BUFLEN);
-	}
+        memset(message, 0, DEFAULT_BUFLEN);
+        memset(receivedMessage, 0, DEFAULT_BUFLEN);
+    }
     return 0;
 }
 
