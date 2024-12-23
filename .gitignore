@@ -1,0 +1,4 @@
+src/obj/server.o
+src/obj/client.o
+src/client
+src/server
